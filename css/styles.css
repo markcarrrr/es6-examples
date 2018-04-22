@@ -1,0 +1,207 @@
+:root {
+    /*
+    * Colours
+    */
+    --accent1:      #067C89;
+    --accent2:      #A80006;
+    --accent3:      #ff5a5f;
+    --neutral1:     #3c3c3c;
+    --neutral2:     #f5f5f5;
+
+    /*
+    * Font stacks
+    */
+    --fontstack1:    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--neutral1);
+    font-family: var(--fontstack1);
+    line-height: 1.42857;
+    margin: 5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--accent1);
+}
+
+h1,
+h2 {
+    margin: 0 0 20px;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 10px
+}
+
+article h1 {
+    font-size: 2em;
+}
+
+a {
+    color: var(--accent2);
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+ul {
+    margin-bottom: 20px;
+}
+
+li {
+    margin: 10px 0 0;
+}
+
+dl:after {
+    clear: both;
+    content: '';
+    display: table;
+}
+
+dt,
+dd {
+    margin-bottom: 10px;
+}
+
+dt {
+    clear: left;
+    float: left;
+    font-weight: 700;
+    margin-right: 10px;
+    width: 100px;
+}
+
+dd {
+    float: left;
+    margin-left: 0;
+}
+
+.header,
+.header h1,
+.header a {
+    color: var(--neutral2);
+}
+
+.header {
+    margin: 0 auto 30px;
+    max-width: 1600px;
+    padding: 0 15px;
+}
+
+.content {
+    background-color: var(--neutral2);
+    border: 5px solid var(--accent3);
+    color: var(--neutral1);
+    margin: auto;
+    max-width: 1600px;
+    padding: 10px;
+}
+
+.section + .section {
+    border-top: 4px solid var(--neutral1);
+    margin-top: 40px;
+    padding-top: 40px;
+}
+
+.divider {
+    border-bottom: 4px solid var(--neutral1);
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+}
+
+.results {
+    border-top: 1px solid var(--neutral1);
+    list-style: none;
+    margin: 40px 0 0;
+    padding: 40px 0 0;
+}
+
+.results li {
+    margin: 0;
+}
+
+.results li + li {
+    border-top: 1px dashed var(--neutral1);
+    margin-top: 20px;
+    padding-top: 30px;
+}
+
+.results dl {
+    margin: 0;
+}
+
+.ability,
+.name {
+    text-transform: capitalize;
+}
+
+.loading {
+    background: url(https://cdnjs.cloudflare.com/ajax/libs/timelinejs/2.25/css/loading.gif) 50% 50% no-repeat;
+    min-height: 40px;
+    text-indent: -999em;
+}
+
+@media (min-width: 768px) {
+    body {
+        margin: 20px;
+    }
+
+    dd {
+        float: none;
+        overflow: hidden;
+    }
+
+    .header {
+        padding: 0 30px;
+    }
+
+    .content {
+        border-width: 10px;
+        padding: 20px;
+    }
+
+    .section + .section {
+        border-top: 0;
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .grid-wrapper {
+        display: grid;
+        grid-template-columns: 50%;
+        grid-template-rows: 1;
+    }
+
+    .grid-left {
+        grid-column: 1;
+        margin: 0 40px 0 0;
+    }
+
+    .grid-right {
+        grid-column: 2;
+        margin: 0 0 0 40px;
+    }
+
+    .section.grid-right {
+        margin-top: 51px;
+    }
+}
