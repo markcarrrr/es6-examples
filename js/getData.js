@@ -140,6 +140,8 @@ class getData {
     }
 
     setResults(data) {
+        let hasError = false;
+
         /*
         * Clean out results output wrapper of any existing HTML.
         * This also clears out the initial 'loading' <li>.
@@ -150,23 +152,41 @@ class getData {
         * Filter results and output HTML template.
         */
         this.filterBy(this.mergeData(data), this.filterQuery).map((setData, index) => {
-            setData.pokemon.map(item => {
-                this.resultsElement.innerHTML += `
-                    <li>
-                        <dl>
-                            <dt class="name">Name:</dt>
-                            <dd class="name"><a href="${item.pokemon.url}">${item.pokemon.name}</a></dd>
-                            <dt class="ability">Ability:</dt>
-                            <dd class="ability">${setData.name}</dd>
-                            <dt>Effect:</dt>
-                            <dd>${setData.effect_entries[0].effect}</dd>
-                            <dt>Generation:</dt>
-                            <dd>${setData.generation.name}</dd>
-                        </dl>
-                    </li>
-                `;
-            });
+            if (setData) {
+                setData.pokemon.map(item => {
+                    this.resultsElement.innerHTML += `
+                        <li>
+                            <dl>
+                                <dt class="name">Name:</dt>
+                                <dd class="name"><a href="${item.pokemon.url}">${item.pokemon.name}</a></dd>
+                                <dt class="ability">Ability:</dt>
+                                <dd class="ability">${setData.name}</dd>
+                                <dt>Effect:</dt>
+                                <dd>${setData.effect_entries[0].effect}</dd>
+                                <dt>Generation:</dt>
+                                <dd>${setData.generation.name}</dd>
+                            </dl>
+                        </li>
+                    `;
+                });
+            } else if(!hasError) {
+                hasError = true;
+            }
         });
+
+        /*
+        * If we don't get all our requests back show a message to the user
+        * and give steps to help resolve the issue.
+        */
+        if (hasError) {
+            this.resultsElement.innerHTML = `
+                <li>
+                    <p>There was an error loading some or all of the content.</p>
+                    
+                    <p>Please <a href="#" onclick="javascript: window.location.reload();">refresh the page</a> and try again or contact support on <a href="tel:+441234567890">01234 567890</a> or <a href="support@acme.com">support@acme.com</a>.</p>
+                </li>
+            `;
+        }
 
         /*
         * Set results form elements to be enabled now we've updated the HTML.
