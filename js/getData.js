@@ -106,8 +106,7 @@ export default class GetData {
         }
 
         /*
-        * Set our results in the order we have requested them
-        * merging our endpoints in to a single output. 
+        * Set our results in the order we have requested them.
         */
         Promise.all(this.promises)
             .then(data => {
