@@ -29,6 +29,7 @@
             <div class="grid-wrapper">
                 <section class="section grid-left">
                     <h2>Solution</h2>
+                    <p>For import/export of modules to work the 'site' will need to be set up in a local server due to CORs issues. As a suggestion <a href="https://www.mamp.info/en/">MAMP</a> can be a good solution for this as can <a href="https://www.iis.net/">IIS</a>.</p>
                     <p>I have made the choice to code in native CSS and JS with no compiling, build process or dependencies.</p>
                     <p>As an isolated task the solution doesn't seem to warrant the need for a framework/library and I wanted to highlight my use of ES6.</p>
 
@@ -46,7 +47,7 @@
                             <ul>
                                 <li>Classes</li>
                                 <li>Promises</li>
-                                <li>Spread syntax</li>
+                                <li>Import/Export modules</li>
                                 <li>Arrow functions</li>
                                 <li>Template literals</li>
                                 <li>Fetch API</li>
@@ -85,7 +86,6 @@
             </div>
         </main>
 
-        <script src="js/getData.js"></script>
-        <script src="js/init.js"></script>
+        <script src="js/init.js" type="module"></script>
     </body>
 </html>

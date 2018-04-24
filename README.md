@@ -9,6 +9,8 @@
 ---
 
 ## Solution
+For import/export of modules to work the 'site' will need to be set up in a local server due to CORs issues. As a suggestion [MAMP](https://www.mamp.info/en/) can be a good solution for this as can [IIS](https://www.iis.net/).
+
 I have made the choice to code in native CSS and JS with no compiling, build process or dependencies.
 
 As an isolated task the solution doesn't seem to warrant the need for a framework/library and I wanted to highlight my use of ES6.
@@ -23,7 +25,7 @@ As an isolated task the solution doesn't seem to warrant the need for a framewor
 * ES6 methods used:
     * Classes
     * Promises
-    * Spread syntax
+    * Export/Import modules
     * Arrow functions
     * Template literals
     * Fetch API

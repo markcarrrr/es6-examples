@@ -1,4 +1,4 @@
-class getData {
+export default class GetData {
     /*
     * 'element' - node.
     * 'data' - array of objects with key 'url' for endpoint.
@@ -25,7 +25,7 @@ class getData {
         this.getElements();
 
         /*
-        * Set up out event listeners.
+        * Set up our event listeners.
         */
         this.setEvents();
 
@@ -35,7 +35,7 @@ class getData {
         this.getResults();
 
         /*
-        * Check to see what the current selected filter is onload
+        * Check to see what the current selected filter is on initialisation
         * and set our inital filter query.
         */
         this.setFilterQuery();
@@ -100,13 +100,14 @@ class getData {
         * Let's only query our api for results if we haven't yet done so.
         */
         if (this.promises.length === 0) {
-            this.data.map(data => {
+            this.data.forEach(data => {
                 this.promises.push(this.request(data));
             });
         }
 
         /*
-        * Set our results in the order we have requested them.
+        * Set our results in the order we have requested them
+        * merging our endpoints in to a single output. 
         */
         Promise.all(this.promises)
             .then(data => {
@@ -125,20 +126,6 @@ class getData {
             .catch(console.log.bind(console));
     }
 
-    mergeData(data) {
-        /*
-        * Let's merge our results from our multiple endpoints
-        * so we have one single source.
-        */
-        let mergedData = [];
-
-        data.map(results => {
-            mergedData = [...mergedData, results];
-        });
-
-        return mergedData;
-    }
-
     setResults(data) {
         let hasError = false;
 
@@ -151,9 +138,9 @@ class getData {
         /*
         * Filter results and output HTML template.
         */
-        this.filterBy(this.mergeData(data), this.filterQuery).map((setData, index) => {
+        this.filterBy(data, this.filterQuery).forEach((setData, index) => {
             if (setData) {
-                setData.pokemon.map(item => {
+                setData.pokemon.forEach(item => {
                     this.resultsElement.innerHTML += `
                         <li>
                             <dl>

@@ -1,4 +1,6 @@
-new getData(
+import GetData from './getData.js';
+
+new GetData(
     document.querySelector('.js-results-wrapper'),
     [
         {
