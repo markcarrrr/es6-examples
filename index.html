@@ -3,87 +3,33 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Zone SFED Test - Mark Carr</title>
+        <title>JavaScript ES6 examples</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/styles.css">
     </head>
 
     <body>
-        <header class="header">
-            <h1>Candidate</h1>
-            <p>Mark Carr &mdash; <a href="https://www.linkedin.com/in/markcarrrr/">LinkedIn</a> &mdash; <a href="tel:+447738637549">07738 637549</a></p>
-        </header>
-
         <main class="content">
-            <section class="section divider">
-                <h2>Task</h2>
-                <ul>
-                    <li>Using a public api or local json files, get data from 2 or more endpoints and then merge and filter the results</li>
-                    <li>Please provide the full solution</li>
-                    <li>Use vanilla JavaScript or a framework</li>
-                    <li>We are particularly interested in seeing use of ES6 methods</li>
-                </ul>
-            </section>
+            <section class="section js-results-wrapper">
+                <h3>Filter Pok&eacute;mon by ability</h3>
 
-            <div class="grid-wrapper">
-                <section class="section grid-left">
-                    <h2>Solution</h2>
-                    <p>For import/export of modules to work the 'site' will need to be set up in a local server due to CORs issues. As a suggestion <a href="https://www.mamp.info/en/">MAMP</a> can be a good solution for this as can <a href="https://www.iis.net/">IIS</a>.</p>
-                    <p>I have made the choice to code in native CSS and JS with no compiling, build process or dependencies.</p>
-                    <p>As an isolated task the solution doesn't seem to warrant the need for a framework/library and I wanted to highlight my use of ES6.</p>
-
-                    <ul>
-                        <li>Tested in browsers:
-                            <ul>
-                                <li>Lastest Chrome (macOS)</li>
-                                <li>Latest Firefox (macOS)</li>
-                                <li>Latest Safari (macOS)</li>
-                                <li>Latest Edge (Win10)</li>
-                                <li>VoiceOver (macOS)</li>
-                            </ul>
-                        </li>
-                        <li>ES6 methods used:
-                            <ul>
-                                <li>Classes</li>
-                                <li>Promises</li>
-                                <li>Import/Export modules</li>
-                                <li>Arrow functions</li>
-                                <li>Template literals</li>
-                                <li>Fetch API</li>
-                            </ul>
-                        </li>
-                        <li>Resources:
-                            <ul>
-                                <li>API: <a href="https://pokeapi.co/">https://pokeapi.co/</a></li>
-                            </ul>
-                        </li>
+                <form class="js-results-form" novalidate>
+                    <label>
+                        <span>Filter by:</span>
+                        <select class="filter-list js-results-filter" name="filteredBy" aria-controls="#results-region">
+                            <option value="all" selected>All</option>
+                        </select>
+                    </label>
+                    <button class="button js-results-button">Filter</button>
+                </form>
+                
+                <div id="#results-region" aria-live="polite" aria-relevant="additions removals" role="region">
+                    <ul class="results js-results-output">
+                        <li class="loading">Loading</li>
                     </ul>
-                </section>
-
-                <section class="section grid-right js-results-wrapper">
-                    <h3>Filter Pok&eacute;mon by ability</h3>
-    
-                    <form class="js-results-form" novalidate>
-                        <label>
-                            <span>Filter by:</span>
-                            <select class="js-results-filter" name="filteredBy" aria-controls="#results-region">
-                                <option value="all" selected>All</option>
-                                <option value="9">Static</option>
-                                <option value="1">Stench</option>
-                                <option value="2">Drizzle</option>
-                            </select>
-                        </label>
-                        <button class="button js-results-button">Filter</button>
-                    </form>
-                    
-                    <div id="#results-region" aria-live="polite" aria-relevant="additions removals" role="region">
-                        <ul class="results js-results-output">
-                            <li class="loading">Loading</li>
-                        </ul>
-                    </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </main>
 
         <script src="js/init.js" type="module"></script>

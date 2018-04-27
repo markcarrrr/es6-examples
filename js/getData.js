@@ -76,7 +76,7 @@ export default class GetData {
             event.preventDefault();
 
             this.setFilterQuery();
-            this.getResults();
+            this.setResults();
         }, false);
 
         /*
@@ -84,7 +84,7 @@ export default class GetData {
         */
         this.filterElement.addEventListener('change', event => {
             this.setFilterQuery();
-            this.getResults();
+            this.setResults();
         }, false);
     }
 
@@ -93,6 +93,15 @@ export default class GetData {
         * Get the current filtered state.
         */
         this.filterQuery = this.filterElement.options[this.filterElement.selectedIndex].value;
+    }
+  
+    setFilterItems() {
+        /*
+        * Set up our filters based on the returned api endpoints.
+        */
+        this.promiseAllData.forEach(filterItem => {
+            this.filterElement.options[this.filterElement.options.length] = new Option(filterItem.name, filterItem.id);
+        });
     }
 
     getResults() {
@@ -110,7 +119,16 @@ export default class GetData {
         */
         Promise.all(this.promises)
             .then(data => {
-                this.setResults(data);
+                /*
+                * Make the returned promises available in scope.
+                */
+                this.promiseAllData = data;
+                
+                /*
+                * Set up our initial filter items and results.
+                */
+                this.setFilterItems();
+                this.setResults();
             });
     }
 
@@ -124,8 +142,8 @@ export default class GetData {
             .then(results => results)
             .catch(console.log.bind(console));
     }
-
-    setResults(data) {
+ 
+    setResults() {
         let hasError = false;
 
         /*
@@ -137,7 +155,7 @@ export default class GetData {
         /*
         * Filter results and output HTML template.
         */
-        this.filterBy(data, this.filterQuery).forEach((setData, index) => {
+        this.filterBy(this.promiseAllData, this.filterQuery).forEach((setData, index) => {
             if (setData) {
                 setData.pokemon.forEach(item => {
                     this.resultsElement.innerHTML += `

@@ -46,10 +46,6 @@ h6 {
     margin: 0 0 10px
 }
 
-article h1 {
-    font-size: 2em;
-}
-
 a {
     color: var(--accent2);
 }
@@ -95,18 +91,6 @@ dd {
     margin-left: 0;
 }
 
-.header,
-.header h1,
-.header a {
-    color: var(--neutral2);
-}
-
-.header {
-    margin: 0 auto 30px;
-    max-width: 1600px;
-    padding: 0 15px;
-}
-
 .content {
     background-color: var(--neutral2);
     border: 5px solid var(--accent3);
@@ -116,16 +100,8 @@ dd {
     padding: 10px;
 }
 
-.section + .section {
-    border-top: 4px solid var(--neutral1);
-    margin-top: 40px;
-    padding-top: 40px;
-}
-
-.divider {
-    border-bottom: 4px solid var(--neutral1);
-    margin-bottom: 40px;
-    padding-bottom: 20px;
+.filter-list {
+    text-transform: capitalize;
 }
 
 .results {
@@ -170,38 +146,8 @@ dd {
         overflow: hidden;
     }
 
-    .header {
-        padding: 0 30px;
-    }
-
     .content {
         border-width: 10px;
         padding: 20px;
-    }
-
-    .section + .section {
-        border-top: 0;
-        margin-top: 0;
-        padding-top: 0;
-    }
-
-    .grid-wrapper {
-        display: grid;
-        grid-template-columns: 50%;
-        grid-template-rows: 1;
-    }
-
-    .grid-left {
-        grid-column: 1;
-        margin: 0 40px 0 0;
-    }
-
-    .grid-right {
-        grid-column: 2;
-        margin: 0 0 0 40px;
-    }
-
-    .section.grid-right {
-        margin-top: 51px;
     }
 }
