@@ -15,11 +15,6 @@ export default class GetData {
         this.data = data;
 
         /*
-        * Set up empty array to build up our array of promises from our api endpoints.
-        */
-        this.promises = [];
-
-        /*
         * Set references to the dom elements we need to access.
         */
         this.getElements();
@@ -106,18 +101,21 @@ export default class GetData {
 
     getResults() {
         /*
-        * Let's only query our api for results if we haven't yet done so.
+        * Set up empty array to build up our array of promises from our api endpoints.
         */
-        if (this.promises.length === 0) {
-            this.data.forEach(data => {
-                this.promises.push(this.request(data));
-            });
-        }
+        let promises = [];
+
+        /*
+        * Request our api endpoint and add returned promises to our array.
+        */
+        this.data.forEach(data => {
+            promises.push(this.request(data));
+        });
 
         /*
         * Set our results in the order we have requested them.
         */
-        Promise.all(this.promises)
+        Promise.all(promises)
             .then(data => {
                 /*
                 * Make the returned promises available in scope.
